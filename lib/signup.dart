@@ -16,7 +16,6 @@ class _SignupPageState extends State<SignupPage> {
   String usernameErrorText = '';
 
   Future<void> _signup() async {
-    // Perform password validation
     if (!_validatePassword(passwordController.text)) {
       setState(() {
         passwordErrorText =
@@ -29,7 +28,6 @@ class _SignupPageState extends State<SignupPage> {
       });
     }
 
-    // Perform username validation
     if (!_validateUsername(usernameController.text)) {
       setState(() {
         usernameErrorText = 'Username must end with "@gmail.com"';
@@ -41,7 +39,6 @@ class _SignupPageState extends State<SignupPage> {
       });
     }
 
-    // Proceed with signup
     final response = await http.post(
       Uri.parse('http://localhost/shy_database/signup.php'),
       body: {
@@ -52,31 +49,23 @@ class _SignupPageState extends State<SignupPage> {
 
     if (response.statusCode == 200) {
       final result = jsonDecode(response.body);
-      // Display a message to the user based on the response from the server
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(result['message']),
         ),
       );
     } else {
-      // Handle errors
       print('Error: ${response.statusCode}');
     }
   }
 
-  // Password validation function
   bool _validatePassword(String password) {
-    // Add your password validation logic here
-    // For example, requiring capital letters, numbers, special characters, and a minimum length of 8
     RegExp passwordRegExp =
         RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
     return passwordRegExp.hasMatch(password);
   }
 
-  // Username validation function
   bool _validateUsername(String username) {
-    // Add your username validation logic here
-    // For example, requiring the username to end with "@gmail.com"
     return username.endsWith('@gmail.com');
   }
 
@@ -90,81 +79,90 @@ class _SignupPageState extends State<SignupPage> {
           style: TextStyle(color: Colors.black),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Create new user',
-              style: TextStyle(
-                color: Colors.green,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 20),
-            TextFormField(
-              style: TextStyle(
-                color: Colors.green,
-                fontFamily: 'RobotoMono',
-              ),
-              controller: usernameController,
-              decoration: InputDecoration(
-                labelText: 'Username',
-                labelStyle: TextStyle(color: Colors.green),
-                errorText: usernameErrorText,
-              ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter your username';
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              style: TextStyle(
-                color: Colors.green,
-                fontFamily: 'RobotoMono',
-              ),
-              controller: passwordController,
-              decoration: InputDecoration(
-                labelText: 'Password',
-                labelStyle: TextStyle(color: Colors.green),
-                errorText: passwordErrorText,
-                suffixIcon: IconButton(onPressed: () {
-                  setState(() {
-                    showPass = !showPass;
-                  });
-                }, icon: Icon(!showPass ? Icons.visibility : Icons.visibility_off))
-              ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter your password';
-                }
-                return null;
-              },
-              obscureText: showPass,
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
-              onPressed: () {
-                // Perform signup when the button is pressed
-                _signup();
-              },
-              child: Text(
-                'Sign Up',
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("images/bg.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Create new user',
                 style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'RobotoMono',
+                  color: Color.fromARGB(255, 252, 255, 252),
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-            ),
-          ],
+              SizedBox(height: 20),
+              TextFormField(
+                style: TextStyle(
+                  color: Color.fromARGB(255, 252, 255, 252),
+                  fontFamily: 'RobotoMono',
+                ),
+                controller: usernameController,
+                decoration: InputDecoration(
+                  labelText: 'Username',
+                  labelStyle: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+                  errorText: usernameErrorText,
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your username';
+                  }
+                  return null;
+                },
+              ),
+              TextFormField(
+                style: TextStyle(
+                  color: Color.fromARGB(255, 250, 253, 251),
+                  fontFamily: 'RobotoMono',
+                ),
+                controller: passwordController,
+                decoration: InputDecoration(
+                  labelText: 'Password',
+                  labelStyle: TextStyle(color: Color.fromARGB(255, 251, 255, 252)),
+                  errorText: passwordErrorText,
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        showPass = !showPass;
+                      });
+                    },
+                    icon: Icon(!showPass ? Icons.visibility : Icons.visibility_off),color: Colors.green,
+                  ),
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your password';
+                  }
+                  return null;
+                },
+                obscureText: showPass,
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
+                onPressed: () {
+                  _signup();
+                },
+                child: Text(
+                  'Sign Up',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontFamily: 'RobotoMono',
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
-      backgroundColor: Colors.black,
     );
   }
 }

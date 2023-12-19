@@ -18,7 +18,7 @@ class Firstpage extends StatelessWidget {
         title: Center(
           child: Text('My Curriculum Vitae'),
         ),
-        backgroundColor: Color.fromRGBO(1, 85, 1, 0.957),
+        backgroundColor: Color.fromARGB(255, 56, 148, 59),
       ),
       body: Column(
         children: [
@@ -26,7 +26,7 @@ class Firstpage extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 10),
               child: CircleAvatar(
-                backgroundColor: Color.fromARGB(255, 104, 204, 118),
+                backgroundColor: Color.fromARGB(255, 56, 148, 59),
                 radius: 72,
                 child: CircleAvatar(
                   radius: 68,
@@ -37,7 +37,7 @@ class Firstpage extends StatelessWidget {
           ),
           const Divider(
             height: 0,
-            color: Color.fromARGB(255, 56, 148, 59),
+            color: Color.fromARGB(255, 105, 248, 110),
           ),
           Row(
             children: [
@@ -48,7 +48,7 @@ class Firstpage extends StatelessWidget {
                     'NAME:',
                     style: TextStyle(
                         fontSize: 20,
-                        color: Colors.lightGreen.shade600,
+                        color: Colors.green,
                         fontFamily: 'RobotoMono'),
                   ),
                 ),
@@ -56,14 +56,14 @@ class Firstpage extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: 5,
+            height: 0,
           ),Padding(padding: EdgeInsets.fromLTRB(10, 0, 0, 10),
           child: Text(
             'Shyla Jhane A. Caparros.',
             style: TextStyle(
               fontFamily: 'RobotoMono',
-              fontSize: 25,
-              color: Colors.green.shade900,
+              fontSize: 20,
+              color: Colors.green,
             ),
           ),),
           
@@ -76,8 +76,8 @@ class Firstpage extends StatelessWidget {
             'WORK INDUSTRY:',
               style: TextStyle(
                   fontFamily: 'RobotoMono',
-                  fontSize: 15,
-                  color: Colors.green.shade600),
+                  fontSize: 20,
+                  color: Colors.green),
             ),
           ),
           SizedBox(
@@ -86,23 +86,23 @@ class Firstpage extends StatelessWidget {
           Padding(
             padding: EdgeInsets.fromLTRB(0, 0, 100, 0),
             child: Text(
-              'Computer Technician',
+              'I.T Technician',
               style: TextStyle(
                   fontFamily: 'RobotoMono',
-                  color: Color.fromARGB(255, 7, 75, 35),
-                  fontSize: 25),
+                  color: Color.fromARGB(255, 82, 221, 86),
+                  fontSize: 20),
             ),
           ),
           Divider(
             height: 5,
-            color: Color.fromARGB(255, 115, 233, 145),
+            color: Color.fromARGB(255, 82, 221, 86),
           ),
           Text(
             'CONTACT ME',
             style: TextStyle(
               fontFamily: 'RobotoMono',
               fontWeight: FontWeight.w600,
-              color: Color.fromARGB(255, 68, 211, 87),
+              color: Color.fromARGB(255, 82, 221, 86),
               fontSize: 20,
             ),
           ),
@@ -153,7 +153,7 @@ class Firstpage extends StatelessWidget {
           Text(
             'SOCIAL MEDIA',
             style: TextStyle(
-              color: Color.fromARGB(255, 2, 87, 58),
+              color: Color.fromARGB(255, 82, 221, 86),
               fontFamily: 'RobotoMono',
               fontWeight: FontWeight.w600,
               fontSize: 20,
@@ -164,13 +164,13 @@ class Firstpage extends StatelessWidget {
             child: Row(children: [
               Icon(
                 Icons.facebook,
-                color: Color.fromARGB(255, 142, 241, 129),
+                color: Color.fromARGB(255, 82, 221, 86),
               ),
               Text(
                 'shyycaparros',
                 style: TextStyle(
                   fontFamily: 'RobotoMono',
-                  color: Color.fromARGB(255, 124, 248, 119),
+                  color: Color.fromARGB(255, 82, 221, 86),
                   fontSize: 25,
                 ),
               ),
@@ -184,7 +184,7 @@ class Firstpage extends StatelessWidget {
                   iconSize: 30,
                   icon: const Icon(
                     Icons.info,
-                    color: Color.fromARGB(255, 133, 241, 142),
+                    color: Color.fromARGB(255, 82, 221, 86),
                   ),
                   onPressed: () {
                     Navigator.push(
@@ -204,7 +204,7 @@ class Firstpage extends StatelessWidget {
                       iconSize: 40,
                       icon: const Icon(
                         Icons.school,
-                        color: Color.fromARGB(255, 81, 236, 115),
+                        color: Color.fromARGB(255, 82, 221, 86),
                       ),
                       onPressed: () {
                         Navigator.push(
